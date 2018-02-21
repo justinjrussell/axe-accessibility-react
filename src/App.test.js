@@ -21,14 +21,12 @@ function mountToDoc(reactElm) {
 }
 
 it('renders without crashing', (done) => {
-
   const appComponent = mountToDoc(<App />);
   const appNode = appComponent.getDOMNode();
-  axe.run(appNode,(err,result) => {
+  axe.run(appNode,(err, result) => {
     const { violations } = result;
     expect(err).toBe(null);
-    expect(result.violations).toHaveLength(3);
-    //console.log(result);
+    expect(violations).toHaveLength(3);
     console.log('violations1',violations[0]);
     console.log('violations2',violations[1]);
     console.log('violations3',violations[2]);
